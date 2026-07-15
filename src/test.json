@@ -1,0 +1,187 @@
+{
+  "sessionId": "89df3522-a935-4e06-bc26-4431a1d440f9",
+  "endpointCount": 20,
+  "allowedDomains": ["petstore.swagger.io"],
+  "endpoints": [
+    {
+      "path": "/pet/{petId}/uploadImage",
+      "method": "POST",
+      "summary": "uploads an image",
+      "description": "",
+      "parameters": ["petId (Path, required: True)"],
+      "requestSchemas": ["object"],
+      "responseSchemas": ["ApiResponse"]
+    },
+    {
+      "path": "/pet",
+      "method": "PUT",
+      "summary": "Update an existing pet",
+      "description": "",
+      "parameters": [],
+      "requestSchemas": ["Pet"],
+      "responseSchemas": []
+    },
+    {
+      "path": "/pet",
+      "method": "POST",
+      "summary": "Add a new pet to the store",
+      "description": "",
+      "parameters": [],
+      "requestSchemas": ["Pet"],
+      "responseSchemas": []
+    },
+    {
+      "path": "/pet/findByStatus",
+      "method": "GET",
+      "summary": "Finds Pets by status",
+      "description": "Multiple status values can be provided with comma separated strings",
+      "parameters": ["status (Query, required: True)"],
+      "requestSchemas": [],
+      "responseSchemas": ["array"]
+    },
+    {
+      "path": "/pet/findByTags",
+      "method": "GET",
+      "summary": "Finds Pets by tags",
+      "description": "Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+      "parameters": ["tags (Query, required: True)"],
+      "requestSchemas": [],
+      "responseSchemas": ["array"]
+    },
+    {
+      "path": "/pet/{petId}",
+      "method": "GET",
+      "summary": "Find pet by ID",
+      "description": "Returns a single pet",
+      "parameters": ["petId (Path, required: True)"],
+      "requestSchemas": [],
+      "responseSchemas": ["Pet"]
+    },
+    {
+      "path": "/pet/{petId}",
+      "method": "POST",
+      "summary": "Updates a pet in the store with form data",
+      "description": "",
+      "parameters": ["petId (Path, required: True)"],
+      "requestSchemas": ["object"],
+      "responseSchemas": []
+    },
+    {
+      "path": "/pet/{petId}",
+      "method": "DELETE",
+      "summary": "Deletes a pet",
+      "description": "",
+      "parameters": ["api_key (Header, required: False)", "petId (Path, required: True)"],
+      "requestSchemas": [],
+      "responseSchemas": []
+    },
+    {
+      "path": "/store/inventory",
+      "method": "GET",
+      "summary": "Returns pet inventories by status",
+      "description": "Returns a map of status codes to quantities",
+      "parameters": [],
+      "requestSchemas": [],
+      "responseSchemas": ["object"]
+    },
+    {
+      "path": "/store/order",
+      "method": "POST",
+      "summary": "Place an order for a pet",
+      "description": "",
+      "parameters": [],
+      "requestSchemas": ["Order"],
+      "responseSchemas": ["Order"]
+    },
+    {
+      "path": "/store/order/{orderId}",
+      "method": "GET",
+      "summary": "Find purchase order by ID",
+      "description": "For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions",
+      "parameters": ["orderId (Path, required: True)"],
+      "requestSchemas": [],
+      "responseSchemas": ["Order"]
+    },
+    {
+      "path": "/store/order/{orderId}",
+      "method": "DELETE",
+      "summary": "Delete purchase order by ID",
+      "description": "For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors",
+      "parameters": ["orderId (Path, required: True)"],
+      "requestSchemas": [],
+      "responseSchemas": []
+    },
+    {
+      "path": "/user/createWithList",
+      "method": "POST",
+      "summary": "Creates list of users with given input array",
+      "description": "",
+      "parameters": [],
+      "requestSchemas": ["array"],
+      "responseSchemas": []
+    },
+    {
+      "path": "/user/{username}",
+      "method": "GET",
+      "summary": "Get user by user name",
+      "description": "",
+      "parameters": ["username (Path, required: True)"],
+      "requestSchemas": [],
+      "responseSchemas": ["User"]
+    },
+    {
+      "path": "/user/{username}",
+      "method": "PUT",
+      "summary": "Updated user",
+      "description": "This can only be done by the logged in user.",
+      "parameters": ["username (Path, required: True)"],
+      "requestSchemas": ["User"],
+      "responseSchemas": []
+    },
+    {
+      "path": "/user/{username}",
+      "method": "DELETE",
+      "summary": "Delete user",
+      "description": "This can only be done by the logged in user.",
+      "parameters": ["username (Path, required: True)"],
+      "requestSchemas": [],
+      "responseSchemas": []
+    },
+    {
+      "path": "/user/login",
+      "method": "GET",
+      "summary": "Logs user into the system",
+      "description": "",
+      "parameters": ["username (Query, required: True)", "password (Query, required: True)"],
+      "requestSchemas": [],
+      "responseSchemas": ["string"]
+    },
+    {
+      "path": "/user/logout",
+      "method": "GET",
+      "summary": "Logs out current logged in user session",
+      "description": "",
+      "parameters": [],
+      "requestSchemas": [],
+      "responseSchemas": []
+    },
+    {
+      "path": "/user/createWithArray",
+      "method": "POST",
+      "summary": "Creates list of users with given input array",
+      "description": "",
+      "parameters": [],
+      "requestSchemas": ["array"],
+      "responseSchemas": []
+    },
+    {
+      "path": "/user",
+      "method": "POST",
+      "summary": "Create user",
+      "description": "This can only be done by the logged in user.",
+      "parameters": [],
+      "requestSchemas": ["User"],
+      "responseSchemas": []
+    }
+  ]
+}

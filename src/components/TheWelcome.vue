@@ -1,8 +1,11 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useApiStore } from '../stores/apiStore'
 
+const apiStore = useApiStore()
+const router = useRouter()
 const text = ref('')
-const isLoading = ref(false)
 const statusMessage = ref('')
 
 const exploreApi = async () => {
@@ -14,32 +17,28 @@ const exploreApi = async () => {
     return
   }
 
-  isLoading.value = true
   statusMessage.value = ''
+  await apiStore
+    .loadApiData('playground/load', { swaggerUrl })
+    .then(async () => {
+      if (apiStore.error) {
+        statusMessage.value = `Error loading API data: ${apiStore.error}`
+        return
+      } else {
+        statusMessage.value = 'API data loaded successfully!'
 
-  try {
-    const response = await fetch('http://localhost:5206/api/playground/load', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ swaggerUrl }),
+        await apiStore.loadChatData(
+          'playground/chat',
+          'Give me a general description about the API',
+          true,
+        )
+        // route to chat page
+        router.push('/chat')
+      }
     })
-
-    if (!response.ok) {
-      throw new Error(`Request failed with status ${response.status}`)
-    }
-
-    const data = await response.json().catch(() => null)
-    statusMessage.value = 'API playground loaded successfully.'
-    console.log('Playground load response:', data)
-  } catch (error) {
-    const message = error?.message || 'Unknown error'
-    statusMessage.value = `Failed to load API playground: ${message}`
-    console.error(error)
-  } finally {
-    isLoading.value = false
-  }
+    .catch((error) => {
+      statusMessage.value = `Error loading API data: ${error.message}`
+    })
 }
 </script>
 
@@ -67,7 +66,7 @@ const exploreApi = async () => {
               icon-right="dynamic_form"
               label="Explore API"
               @click="exploreApi"
-              :disable="isLoading"
+              :disable="apiStore.loading"
             />
           </template>
         </q-input>
