@@ -29,7 +29,7 @@ const exploreApi = async () => {
 
         await apiStore.loadChatData(
           'playground/chat',
-          'Give me a general description about the API',
+          'This query is not related to the knowledge base. Please provide a response based on your general knowledge about API exploration and usage.',
           true,
         )
         // route to chat page

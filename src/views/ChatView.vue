@@ -18,7 +18,6 @@
           v-for="(message, index) in apiStore.chatData"
           :key="index"
           :message="message"
-          :format="selectedFormat"
         />
       </div>
 
@@ -32,24 +31,13 @@
         />
 
         <div class="footer-actions">
-          <label>
-            Output format
-            <select v-model="selectedFormat">
-              <option value="pretty-json">Pretty JSON</option>
-              <option value="json-compact">Compact JSON</option>
-              <option value="yaml">YAML</option>
-              <option value="raw">Raw</option>
-            </select>
-          </label>
-
-          <button
+          <q-btn
             class="send-button"
             :disabled="!userQuery.trim() || apiStore.loading"
             @click="sendMessage"
-            type="button"
           >
             {{ apiStore.loading ? 'Sending…' : 'Send' }}
-          </button>
+          </q-btn>
         </div>
       </div>
     </section>
@@ -63,7 +51,6 @@ import ChatMessage from '../components/ChatMessage.vue'
 
 const apiStore = useApiStore()
 const userQuery = ref('')
-const selectedFormat = ref('pretty-json')
 const messagesRef = ref(null)
 
 function scrollToBottom() {
@@ -127,7 +114,7 @@ onMounted(async () => {
   border: none;
   background: #2857eb;
   color: white;
-  padding: 0.75rem 1rem;
+  padding: 1.25rem 7rem;
   border-radius: 999px;
   cursor: pointer;
   transition:
@@ -194,7 +181,7 @@ onMounted(async () => {
   flex-wrap: wrap;
   gap: 0.75rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
 }
 
 .footer-actions label {
