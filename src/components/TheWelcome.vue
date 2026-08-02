@@ -26,10 +26,11 @@ const exploreApi = async () => {
         return
       } else {
         statusMessage.value = 'API data loaded successfully!'
+        let baseUrl = apiStore.data?.allowedDomains[0] || endpoint
 
         await apiStore.loadChatData(
           'playground/chat',
-          'This query is not related to the knowledge base. Please provide a response based on your general knowledge about API exploration and usage.',
+          `Hello, I would like to explore the API ${baseUrl}. Please provide me with an overview of the API in simple terms, including its purpose, main features, and any important details I should know. Please keep the explanation easy to understand.`,
           true,
         )
         // route to chat page
