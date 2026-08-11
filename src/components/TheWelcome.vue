@@ -31,7 +31,7 @@ const exploreApi = async () => {
         setTimeout(() => {
           // route to chat page
           router.push('/chat')
-        }, 5000)
+        }, 10000)
 
         await apiStore.loadChatStreamData(
           'playground/chatStream',
