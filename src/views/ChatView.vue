@@ -9,9 +9,7 @@
     </div>
 
     <section class="chat-window">
-      <div v-if="apiStore.error" class="chat-error">
-        {{ apiStore.error.message || apiStore.error }}
-      </div>
+      <div v-if="apiStore.error" class="chat-error">Error loading API data</div>
 
       <div class="messages" ref="messagesRef">
         <ChatMessage
@@ -68,7 +66,7 @@ async function sendMessage() {
     return
   }
 
-  await apiStore.loadChatData('playground/chat', query)
+  await apiStore.loadChatStreamData('playground/chatStream', query)
   userQuery.value = ''
   scrollToBottom()
 }

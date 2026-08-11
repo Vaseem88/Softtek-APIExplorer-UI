@@ -28,13 +28,16 @@ const exploreApi = async () => {
         statusMessage.value = 'API data loaded successfully!'
         let baseUrl = apiStore.data?.allowedDomains[0] || endpoint
 
-        await apiStore.loadChatData(
-          'playground/chat',
+        setTimeout(() => {
+          // route to chat page
+          router.push('/chat')
+        }, 5000)
+
+        await apiStore.loadChatStreamData(
+          'playground/chatStream',
           `Hello, I would like to explore the API ${baseUrl}. Please provide me with an overview of the API in simple terms, including its purpose, main features, and any important details I should know. Please keep the explanation easy to understand.`,
           true,
         )
-        // route to chat page
-        router.push('/chat')
       }
     })
     .catch((error) => {
