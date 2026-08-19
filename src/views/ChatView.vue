@@ -2,7 +2,7 @@
   <div class="chat-page">
     <div class="chat-header">
       <div>
-        <h1>API Chatbot</h1>
+        <h3>API Chatbot</h3>
         <p>Ask the AI agent for API details, examples, or results in your preferred format.</p>
       </div>
       <button class="clear-button" @click="clearChat" type="button">Clear conversation</button>
@@ -20,23 +20,26 @@
       </div>
 
       <div class="chat-footer">
-        <textarea
+        <q-input
+          rounded
+          outlined
+          autogrow
           v-model="userQuery"
-          class="chat-input"
-          rows="3"
           placeholder="Type a question, example request, or desired output format..."
           @keydown.enter.exact.prevent="sendMessage"
-        />
-
-        <div class="footer-actions">
-          <q-btn
-            class="send-button"
-            :disabled="!userQuery.trim() || apiStore.loading"
-            @click="sendMessage"
-          >
-            {{ apiStore.loading ? 'Sending…' : 'Send' }}
-          </q-btn>
-        </div>
+        >
+          <template v-slot:append>
+            <q-btn
+              round
+              color="primary"
+              icon="merge"
+              class="absolute-bottom-right m-2"
+              :disabled="!userQuery.trim() || apiStore.loading"
+              @click="sendMessage"
+            >
+            </q-btn>
+          </template>
+        </q-input>
       </div>
     </section>
   </div>
@@ -112,7 +115,7 @@ onMounted(async () => {
   border: none;
   background: #2857eb;
   color: white;
-  padding: 1.25rem 7rem;
+  padding: 1rem 5rem;
   border-radius: 999px;
   cursor: pointer;
   transition:

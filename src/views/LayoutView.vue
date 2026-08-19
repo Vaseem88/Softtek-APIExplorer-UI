@@ -15,9 +15,9 @@
             <q-item-section>Home</q-item-section>
           </q-item>
 
-          <q-item clickable class="text-primary" v-ripple to="/explorer">
+          <!-- <q-item clickable class="text-primary" v-ripple to="/explorer">
             <q-item-section>Explorer</q-item-section>
-          </q-item>
+          </q-item> -->
 
           <q-item clickable class="text-primary" v-ripple to="/chat">
             <q-item-section>Chat</q-item-section>
